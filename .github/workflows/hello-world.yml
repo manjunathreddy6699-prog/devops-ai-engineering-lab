@@ -13,10 +13,6 @@ jobs:
 
     steps:
       - run: echo Hello World !
-      - name: Current Time
-        # You may pin to the exact commit or the version.
-        # uses: gerred/current-time@5172b4eff2aed61e8c68ca11076d69a2abc0b1bc
-        uses: gerred/current-time@v1.0.0
-
-      - run: echo ${{ runner.name }}
+      - run: echo hostname
+      - run: echo "$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
       
