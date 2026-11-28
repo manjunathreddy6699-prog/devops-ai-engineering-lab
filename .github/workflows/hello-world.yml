@@ -31,8 +31,14 @@ jobs:
     steps:
       - name: test job 
         run: echo this is a test job
+  security_scan:
+    needs: build
+    runs-on:  ubuntu-22.04
+    steps:
+      - name: security_scan job
+        run: echo this is security_scan job
   deploy:
-    needs: test
+    needs: [test,security_scan]
     runs-on: ubuntu-22.04
     steps:
       - name: deploy job
