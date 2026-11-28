@@ -3,21 +3,40 @@
 name: hello-world
 
 on:
+  schedule:
+    - cron: '00 6 1 * *'
+  
   push:
+    paths: 
+      - '.github/workflows/**'
     branches: [ "main" ]
+    
 
   pull_request:
+    paths:
+      - '.github/workflows/**'
     branches:
       - main
 
 jobs:
-  hello-world:
-    runs-on: ubuntu-latest
-
+  build:
+    runs-on: ubuntu-22.04
     steps:
-      - name: Print welcome message
-        run: echo Hello World !
+      - name: build job
+        run: echo this is build job
 
-      - name: Runner Information
-        run: hostname && date -u
+  test:
+    needs: build
+    runs-on:  ubuntu-22.04
+    steps:
+      - name: test job 
+        run: echo this is a test job
+  deploy:
+    needs: test
+    runs-on: ubuntu-22.04
+    steps:
+      - name: deploy job
+        run: echo this is deployment job
+  
+  
       
