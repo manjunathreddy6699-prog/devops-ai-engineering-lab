@@ -25,7 +25,7 @@ jobs:
       - name: build job
         run: echo ${{ env.APP_NAME }}
       - name: prints
-        run: echo Hello, ${{ env.APP_NAME }}"
+        run: echo Hello, ${{ env.APP_NAME }}
 
   test:
     needs: build
