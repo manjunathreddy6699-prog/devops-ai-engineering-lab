@@ -23,7 +23,9 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: build job
-        run: echo this is build job
+        run: echo $APP_NAME
+      - name: prints
+        run: echo Hello, $APP_NAME
 
   test:
     needs: build
