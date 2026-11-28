@@ -38,7 +38,7 @@ jobs:
       - name: security_scan job
         run: echo this is security_scan job
   deploy:
-    if: ${{ github.ref == 'ref/heads/main' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     needs: [test,security_scan]
     runs-on: ubuntu-22.04
     steps:
